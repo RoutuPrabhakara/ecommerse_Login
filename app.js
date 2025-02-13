@@ -57,6 +57,18 @@ app.post('/SignUp',async(req,res)=>{
    })
   }
 })
+app.get('/all', async(req, res)=>{
+    try {
+        const allData = await User.find();
+        res.status(200).json({
+            data:allData
+        })
+    } catch (error) {
+        res.status(500).json({
+            error:'Internal server error'
+        })
+    }
+})
 
 app.listen(5000,()=>{
     console.log('Server is connected in 5000 Port')
